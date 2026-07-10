@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>后台管理 | 孙贤哲律师</title>
+<style>
+:root {
+  --bg:#0a0a14;--bg2:#12122a;--card:#1a1a38;--gold:#c9a96e;--gold-light:#d4bc8a;--text:#e0e0e0;--text-dim:#999;--radius:12px;--transition:.3s ease;
+  --red:#e74c3c;--green:#27ae60;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.7;min-height:100vh;display:flex;flex-direction:column;}
+header{text-align:center;padding:40px 20px 20px;border-bottom:1px solid rgba(201,169,110,.1)}
+header h1{color:var(--gold);font-size:1.8rem;font-weight:700}
+header p{color:var(--text-dim);font-size:.9rem;margin-top:6px}
+main{flex:1;max-width:640px;margin:40px auto;padding:0 20px;width:100%}
+.card{background:var(--card);border:1px solid rgba(201,169,110,.08);border-radius:var(--radius);padding:32px;margin-bottom:24px}
+.card h2{color:var(--gold);font-size:1.15rem;margin-bottom:20px;display:flex;align-items:center;gap:8px}
+.form-group{margin-bottom:20px}
+.form-group label{display:block;color:var(--text-dim);font-size:.85rem;margin-bottom:8px}
+.form-group input,.form-group select{width:100%;background:var(--bg);border:1px solid rgba(201,169,110,.15);border-radius:8px;padding:12px 16px;color:#fff;font-size:.95rem;outline:none;transition:var(--transition)}
+.form-group input:focus,.form-group select:focus{border-color:var(--gold)}
+.form-group .hint{color:var(--text-dim);font-size:.78rem;margin-top:6px}
+.form-group select{appearance:none;cursor:pointer}
+.btn-row{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:12px 24px;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;transition:var(--transition);border:none}
+.btn-primary{background:var(--gold);color:var(--bg)}
+.btn-primary:hover{background:var(--gold-light)}
+.btn-outline{background:transparent;color:var(--gold);border:1px solid rgba(201,169,110,.3)}
+.btn-outline:hover{background:rgba(201,169,110,.05)}
+.btn-danger{background:transparent;color:var(--red);border:1px solid rgba(231,76,60,.3)}
+.btn-danger:hover{background:rgba(231,76,60,.08)}
+.status{display:inline-flex;align-items:center;gap:6px;font-size:.85rem;margin-left:12px}
+.status .dot{width:8px;height:8px;border-radius:50%}
+.status.ok{color:var(--green)}.status.ok .dot{background:var(--green)}
+.status.wait{color:var(--text-dim)}.status.wait .dot{background:var(--text-dim)}
+footer{text-align:center;padding:20px;color:var(--text-dim);font-size:.8rem;border-top:1px solid rgba(201,169,110,.08)}
+footer a{color:var(--gold);text-decoration:none}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>&#x2699;&#xFE0F; 后台管理</h1>
+  <p>配置 AI 智能问答的 API Key · 仅律师本人访问</p>
+</header>
+
+<main>
+  <div class="card">
+    <h2>&#x1F511; AI 接口配置</h2>
+
+    <div class="form-group">
+      <label>API 地址</label>
+      <input type="text" id="baseUrl" placeholder="https://api.deepseek.com/v1/chat/completions">
+      <div class="hint">默认使用 DeepSeek。支持 OpenAI 兼容接口，可切换其他模型。</div>
+    </div>
+
+    <div class="form-group">
+      <label>API Key</label>
+      <input type="password" id="apiKey" placeholder="sk-...">
+      <div class="hint">Key 仅保存在当前浏览器本地，不会上传到任何服务器。</div>
+    </div>
+
+    <div class="form-group">
+      <label>模型名称</label>
+      <select id="model">
+        <option value="deepseek-chat">deepseek-chat (V3)</option>
+        <option value="deepseek-reasoner">deepseek-reasoner (R1)</option>
+        <option value="gpt-4o">gpt-4o</option>
+        <option value="gpt-3.5-turbo">gpt-3.5-turbo</option>
+        <option value="custom">自定义...</option>
+      </select>
+      <input type="text" id="customModel" placeholder="输入自定义模型名称" style="display:none;margin-top:8px">
+      <div class="hint">如使用 Anthropic 等非 OpenAI 模型，请通过 OpenAI 兼容代理中转。</div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="save()">&#x1F4BE; 保存配置</button>
+      <button class="btn btn-outline" onclick="test()">&#x1F4E1; 测试连接</button>
+      <button class="btn btn-danger" onclick="clearAll()">&#x1F5D1;&#xFE0F; 清除配置</button>
+    </div>
+    <div style="margin-top:16px">
+      <span class="status wait" id="status"><span class="dot"></span> <span id="statusText">等待配置</span></span>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>&#x1F4E8; 常用 API 代理推荐</h2>
+    <div style="color:var(--text-dim);font-size:.88rem;line-height:2">
+      <p><strong>DeepSeek 官方</strong>：<code>https://api.deepseek.com/v1/chat/completions</code></p>
+      <p><strong>OpenAI 官方</strong>：<code>https://api.openai.com/v1/chat/completions</code></p>
+      <p><strong>自定义代理</strong>：任意兼容 OpenAI 接口格式的代理服务均可。</p>
+      <p style="margin-top:12px;font-size:.8rem">推荐使用 DeepSeek，国内访问稳定、价格低、中文效果好。在 <a href="https://platform.deepseek.com" target="_blank" style="color:var(--gold)">platform.deepseek.com</a> 注册获取 Key。</p>
+    </div>
+  </div>
+
+  <div class="card" style="text-align:center">
+    <p style="color:var(--text-dim);margin-bottom:12px">配置完成后，访问前台页面即可使用 AI 智能问答</p>
+    <a href="index.html" class="btn btn-outline" style="text-decoration:none">&#x1F3E0; 回到首页</a>
+  </div>
+</main>
+
+<footer>
+  <p>孙贤哲律师 &copy; 2026 · <a href="index.html">返回前台</a></p>
+</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+
+// Load saved config
+function loadConfig(){
+  const key=localStorage.getItem('sunxz_apikey');
+  const url=localStorage.getItem('sunxz_baseurl')||'https://api.deepseek.com/v1/chat/completions';
+  const model=localStorage.getItem('sunxz_model')||'deepseek-chat';
+  $('baseUrl').value=url;
+  $('apiKey').value=key||'';
+  setModelValue(model);
+  updateStatus();
+}
+
+function setModelValue(model){
+  const sel=$('model');
+  const custom=$('customModel');
+  const known=['deepseek-chat','deepseek-reasoner','gpt-4o','gpt-3.5-turbo'];
+  if(known.includes(model)){
+    sel.value=model;
+    custom.style.display='none';
+  }else{
+    sel.value='custom';
+    custom.style.display='block';
+    custom.value=model;
+  }
+}
+
+$('model').onchange=function(){
+  if(this.value==='custom'){
+    $('customModel').style.display='block';
+    $('customModel').focus();
+  }else{
+    $('customModel').style.display='none';
+  }
+};
+
+function getModel(){
+  return $('model').value==='custom'?$('customModel').value.trim():$('model').value;
+}
+
+function save(){
+  const key=$('apiKey').value.trim();
+  const url=$('baseUrl').value.trim();
+  const model=getModel();
+  if(!key){alert('请输入 API Key');return}
+  if(!url){alert('请输入 API 地址');return}
+  localStorage.setItem('sunxz_apikey',key);
+  localStorage.setItem('sunxz_baseurl',url);
+  localStorage.setItem('sunxz_model',model||'gpt-3.5-turbo');
+  updateStatus();
+  $('statusText').textContent='配置已保存';
+  $('status').className='status ok';
+  setTimeout(()=>{$('statusText').textContent='已配置';},2000);
+}
+
+function clearAll(){
+  if(!confirm('确定要清除所有配置吗？AI 智能问答将不可用。'))return;
+  localStorage.removeItem('sunxz_apikey');
+  localStorage.removeItem('sunxz_baseurl');
+  localStorage.removeItem('sunxz_model');
+  $('apiKey').value='';
+  $('baseUrl').value='https://api.deepseek.com/v1/chat/completions';
+  setModelValue('deepseek-chat');
+  $('statusText').textContent='等待配置';
+  $('status').className='status wait';
+}
+
+async function test(){
+  const key=$('apiKey').value.trim();
+  const url=$('baseUrl').value.trim();
+  const model=getModel();
+  if(!key||!url){alert('请先填写 API Key 和地址');return}
+  $('statusText').textContent='测试中...';
+  $('status').className='status wait';
+  try{
+    const resp=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${key}`},body:JSON.stringify({model,messages:[{role:'user',content:'你好，请用一句话回复'}],max_tokens:50})});
+    if(resp.ok){
+      $('statusText').textContent='连接成功';
+      $('status').className='status ok';
+    }else{
+      const err=await resp.json().catch(()=>({}));
+      $('statusText').textContent='失败：'+(err.error?.message||resp.status+' '+resp.statusText);
+      $('status').className='status wait';
+      $('status').style.color='var(--red)';
+    }
+  }catch(e){
+    $('statusText').textContent='网络错误：'+e.message;
+    $('status').className='status wait';
+    $('status').style.color='var(--red)';
+  }
+}
+
+function updateStatus(){
+  const key=localStorage.getItem('sunxz_apikey');
+  if(key){
+    $('statusText').textContent='已配置';
+    $('status').className='status ok';
+  }else{
+    $('statusText').textContent='等待配置';
+    $('status').className='status wait';
+  }
+}
+
+loadConfig();
+</script>
+</body>
+</html>
