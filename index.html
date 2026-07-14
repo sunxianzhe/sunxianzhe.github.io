@@ -3,301 +3,125 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="孙贤哲律师 - 北京策略（济南）律师事务所，刑事辩护·民事代理·企业法律顾问">
-<title>孙贤哲律师 | 北京策略（济南）律师事务所</title>
+<title>孙贤哲律师 | 法律问题，轻松搞定</title>
 <style>
-:root {
-  --bg: #0a0a14; --bg2: #12122a; --card: #1a1a38;
-  --gold: #c9a96e; --gold-light: #d4bc8a; --text: #e0e0e0; --text-dim: #999;
-  --radius: 12px; --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
-}
-* { margin:0;padding:0;box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Noto Sans SC",sans-serif; background:var(--bg); color:var(--text); line-height:1.7; overflow-x:hidden; }
-
-nav { position:fixed;top:0;left:0;right:0;z-index:1000;padding:16px 40px;backdrop-filter:blur(16px);background:rgba(10,10,20,.88);border-bottom:1px solid rgba(201,169,110,.12);display:flex;justify-content:space-between;align-items:center;transition:var(--transition); }
-nav.scrolled { padding:10px 40px; }
-.logo { font-size:1.25rem;font-weight:700;color:var(--gold);letter-spacing:1px; }
-.nav-links { display:flex;gap:28px;list-style:none; }
-.nav-links a { color:var(--text-dim);text-decoration:none;font-size:.9rem;transition:var(--transition); }
-.nav-links a:hover,.nav-links a.active { color:var(--gold); }
-.menu-btn { display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px; }
-.menu-btn span { width:24px;height:2px;background:var(--gold);transition:var(--transition); }
-
-section { padding:100px 40px;max-width:1200px;margin:0 auto; }
-.section-tag { color:var(--gold);font-size:.85rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:12px; }
-.section-title { font-size:2.2rem;font-weight:700;margin-bottom:16px;color:#fff; }
-.section-subtitle { color:var(--text-dim);font-size:1.05rem;max-width:600px;margin-bottom:48px; }
-
-/* Hero */
-#hero { min-height:100vh;display:flex;align-items:center;background:radial-gradient(ellipse at 70% 30%,rgba(201,169,110,.06) 0%,transparent 60%),radial-gradient(ellipse at 30% 70%,rgba(42,74,127,.08) 0%,transparent 60%),var(--bg);position:relative; }
-.hero-content { position:relative;z-index:1;max-width:580px; }
-.hero-portrait { position:relative;z-index:1;flex-shrink:0; }
-.hero-portrait img { width:260px;height:330px;object-fit:cover;border-radius:16px;border:2px solid rgba(201,169,110,.2); }
-.hero-row { display:flex;align-items:center;gap:60px;flex-wrap:wrap; }
-.qr-img { width:140px;height:140px;border-radius:var(--radius);border:2px solid rgba(201,169,110,.2); }
-.hero-badge { display:inline-block;padding:6px 16px;border:1px solid rgba(201,169,110,.3);border-radius:20px;color:var(--gold);font-size:.85rem;margin-bottom:28px; }
-.hero-name { font-size:3.2rem;font-weight:800;color:#fff;line-height:1.2;margin-bottom:12px; }
-.hero-name span { color:var(--gold); }
-.hero-title { font-size:1.2rem;color:var(--text-dim);margin-bottom:8px; }
-.hero-firm { font-size:1.05rem;color:var(--text-dim);margin-bottom:32px; }
-.hero-tags { display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px; }
-.hero-tags span { padding:6px 14px;background:rgba(201,169,110,.08);border:1px solid rgba(201,169,110,.15);border-radius:16px;font-size:.82rem;color:var(--gold-light); }
-.hero-cta { display:flex;gap:16px;flex-wrap:wrap; }
-.btn-primary,.btn-outline { display:inline-block;padding:14px 32px;border-radius:8px;font-size:1rem;text-decoration:none;font-weight:600;transition:var(--transition);cursor:pointer; }
-.btn-primary { background:var(--gold);color:var(--bg);border:none; }
-.btn-primary:hover { background:var(--gold-light);transform:translateY(-1px);box-shadow:0 8px 24px rgba(201,169,110,.2); }
-.btn-outline { background:transparent;color:var(--gold);border:1px solid rgba(201,169,110,.3); }
-.btn-outline:hover { border-color:var(--gold);background:rgba(201,169,110,.05); }
-
-/* About */
-.about-grid { display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start; }
-.about-text p { color:var(--text-dim);margin-bottom:20px;font-size:1rem; }
-.stats { display:grid;grid-template-columns:1fr 1fr;gap:20px; }
-.stat-card { background:var(--card);border:1px solid rgba(201,169,110,.08);border-radius:var(--radius);padding:28px;text-align:center;transition:var(--transition); }
-.stat-card:hover { border-color:rgba(201,169,110,.25);transform:translateY(-2px); }
-.stat-num { font-size:2.4rem;font-weight:800;color:var(--gold);line-height:1; }
-.stat-label { color:var(--text-dim);font-size:.85rem;margin-top:8px; }
-
-/* Practice Areas */
-.practice-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:24px; }
-.practice-card { background:var(--card);border:1px solid rgba(201,169,110,.08);border-radius:var(--radius);padding:36px 28px;transition:var(--transition); }
-.practice-card:hover { border-color:rgba(201,169,110,.3);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.3); }
-.practice-icon { font-size:2rem;margin-bottom:16px; }
-.practice-name { font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:10px; }
-.practice-desc { color:var(--text-dim);font-size:.9rem;line-height:1.6; }
-
-/* Legal Q&A */
-#legal-qa { background:var(--bg2);max-width:100%;padding:100px 40px; }
-#legal-qa>* { max-width:1200px;margin-left:auto;margin-right:auto; }
-.qa-container { max-width:1200px;margin:0 auto; }
-.qa-mode-tabs { display:flex;gap:0;margin-bottom:32px;border:1px solid rgba(201,169,110,.15);border-radius:var(--radius);overflow:hidden;width:fit-content; }
-.qa-mode-tab { padding:12px 28px;cursor:pointer;font-size:.9rem;color:var(--text-dim);background:transparent;border:none;transition:var(--transition); }
-.qa-mode-tab.active { background:var(--gold);color:var(--bg);font-weight:600; }
-.search-box { display:flex;gap:12px;background:var(--card);border:1px solid rgba(201,169,110,.15);border-radius:var(--radius);padding:6px;transition:var(--transition); }
-.search-box:focus-within { border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,169,110,.1); }
-.search-box input { flex:1;background:transparent;border:none;outline:none;color:#fff;font-size:1rem;padding:14px 16px; }
-.search-box input::placeholder { color:var(--text-dim); }
-.search-box button { background:var(--gold);color:var(--bg);border:none;padding:14px 28px;border-radius:8px;font-size:.95rem;font-weight:600;cursor:pointer;transition:var(--transition);white-space:nowrap; }
-.search-box button:hover { background:var(--gold-light); }
-.search-hint { color:var(--text-dim);font-size:.82rem;margin-top:10px;padding-left:8px; }
-.search-hint a { color:var(--gold);text-decoration:underline;cursor:pointer; }
-
-.results-area { display:none; }
-.results-area.active { display:block; }
-.result-count { color:var(--text-dim);font-size:.85rem;margin-bottom:16px; }
-.result-card { background:var(--card);border:1px solid rgba(201,169,110,.08);border-radius:var(--radius);padding:24px;margin-bottom:16px;transition:var(--transition); }
-.result-card:hover { border-color:rgba(201,169,110,.2); }
-.result-card h4 { color:var(--gold);margin-bottom:8px;font-size:1rem; }
-.result-card p { color:var(--text-dim);font-size:.93rem;line-height:1.7; }
-.result-tags { display:flex;gap:8px;flex-wrap:wrap;margin-top:12px; }
-.result-tag { padding:3px 10px;background:rgba(201,169,110,.1);color:var(--gold);border-radius:12px;font-size:.75rem; }
-.empty-result { text-align:center;padding:48px;color:var(--text-dim); }
-.empty-result .emoji { font-size:3rem;margin-bottom:16px; }
-
-/* AI Chat */
-.chat-area { display:none; }
-.chat-area.active { display:block; }
-.chat-messages { background:var(--card);border:1px solid rgba(201,169,110,.08);border-radius:var(--radius);padding:24px;min-height:200px;max-height:500px;overflow-y:auto;margin-bottom:12px; }
-.chat-msg { margin-bottom:20px; }
-.chat-msg.user { text-align:right; }
-.chat-msg.user .bubble { background:var(--gold);color:var(--bg);display:inline-block;padding:12px 18px;border-radius:14px 14px 4px 14px;max-width:85%;text-align:left;font-size:.95rem; }
-.chat-msg.ai .bubble { background:var(--bg2);border:1px solid rgba(201,169,110,.12);display:inline-block;padding:14px 18px;border-radius:14px 14px 14px 4px;max-width:85%;font-size:.95rem;line-height:1.8; }
-.chat-input-area { display:flex;gap:10px; }
-.chat-input-area input { flex:1;background:var(--card);border:1px solid rgba(201,169,110,.15);border-radius:var(--radius);padding:14px 16px;color:#fff;font-size:.95rem;outline:none; }
-.ai-mode-notice { text-align:center;padding:60px 20px;color:var(--text-dim); }
-.ai-mode-notice .emoji { font-size:3rem;margin-bottom:16px; }
-.ai-mode-notice button { margin-top:16px;background:var(--gold);color:var(--bg);border:none;padding:12px 28px;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer; }
-
-/* Contact */
-.contact-grid { display:grid;grid-template-columns:1fr 1fr;gap:40px; }
-.contact-item { display:flex;align-items:flex-start;gap:16px;margin-bottom:28px; }
-.contact-icon { width:44px;height:44px;background:rgba(201,169,110,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0; }
-.contact-label { color:var(--text-dim);font-size:.8rem;margin-bottom:4px; }
-.contact-value { color:#fff;font-size:1rem; }
-.qr-placeholder { width:140px;height:140px;background:var(--card);border:1px dashed rgba(201,169,110,.2);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;color:var(--text-dim);font-size:.8rem; }
-
-footer { text-align:center;padding:40px;border-top:1px solid rgba(201,169,110,.08);color:var(--text-dim);font-size:.85rem; }
-
-.fade-in { opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease; }
-.fade-in.visible { opacity:1;transform:translateY(0); }
-
-@media (max-width:768px) {
-  nav { padding:14px 20px; }
-  .nav-links { display:none;position:absolute;top:60px;left:0;right:0;background:rgba(10,10,20,.97);flex-direction:column;padding:20px;gap:16px;border-bottom:1px solid rgba(201,169,110,.1); }
-  .nav-links.open { display:flex; }
-  .menu-btn { display:flex; }
-  section { padding:60px 20px; }
-  .hero-name { font-size:2.2rem; }
-  .about-grid,.contact-grid { grid-template-columns:1fr;gap:40px; }
-  .practice-grid { grid-template-columns:1fr; }
-  .stats { grid-template-columns:1fr 1fr; }
-  .hero-row { flex-direction:column; }
-  .hero-portrait img { width:180px;height:230px; }
-  .search-box { flex-direction:column; }
-  .search-box button { width:100%; }
+:root{--bg:#fff;--bg2:#f8fafc;--card:#fff;--accent:#1e40af;--accent-d:#1e3a8a;--accent-l:#eff6ff;--text:#1e293b;--text-m:#64748b;--text-l:#94a3b8;--border:#e2e8f0;--radius:12px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:14px 40px;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+nav.scrolled{padding:10px 40px}
+.logo{font-size:1.1rem;font-weight:700;color:var(--accent-d)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:var(--text-m);text-decoration:none;font-size:.88rem;transition:.2s}
+.nav-links a:hover,.nav-links a.active{color:var(--accent)}
+.menu-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.menu-btn span{width:22px;height:2px;background:var(--text);border-radius:1px}
+section{padding:80px 40px;max-width:1100px;margin:0 auto}
+#hero{padding-top:140px;padding-bottom:60px;text-align:center;background:linear-gradient(180deg,#f0fdf4 0%,#fff 40%)}
+.hero-avatar{width:88px;height:88px;border-radius:50%;object-fit:cover;border:2px solid #e5e7eb;margin-bottom:20px}
+.hero-name{font-size:2rem;font-weight:800;color:#0f172a}
+.hero-name span{color:#1e293b}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:16px 0}
+.hero-tags span{padding:4px 12px;background:#f8fafc;color:var(--accent-d);border-radius:14px;font-size:.8rem;font-weight:500}
+.hero-firm{color:var(--text-m);font-size:.95rem;margin-bottom:36px}
+.search-wrap{max-width:680px;margin:0 auto 20px}
+.search-box{display:flex;gap:8px;background:var(--card);border:2px solid var(--border);border-radius:50px;padding:6px 6px 6px 24px;transition:.2s;box-shadow:0 4px 20px rgba(0,0,0,.04)}
+.search-box:focus-within{border-color:#64748b;box-shadow:0 4px 24px rgba(30,64,175,.12)}
+.search-box input{flex:1;background:none;border:none;outline:none;font-size:1.05rem;color:var(--text);min-width:0}
+.search-box input::placeholder{color:var(--text-l)}
+.search-box button{background:#22c55e;color:#fff;border:none;padding:12px 28px;border-radius:44px;font-size:.95rem;font-weight:600;cursor:pointer;transition:.2s;white-space:nowrap}
+.search-box button:hover{background:#16a34a;transform:scale(1.02)}
+.quick-chips{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;max-width:680px;margin:0 auto}
+.quick-chip{padding:8px 18px;background:var(--bg);border:1px solid var(--border);border-radius:24px;font-size:.85rem;color:var(--text-m);cursor:pointer;transition:.2s;white-space:nowrap}
+.quick-chip:hover{border-color:var(--accent);color:var(--accent-d);background:var(--accent-l)}
+.results-wrap{max-width:800px;margin:0 auto;text-align:left}
+.result-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px 24px;margin-bottom:12px;transition:.2s}
+.result-card:hover{border-color:#e5e7eb}
+.result-card h4{color:var(--text);font-size:.95rem;margin-bottom:8px}
+.result-card p{color:var(--text-m);font-size:.88rem;line-height:1.7}
+.result-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.result-tag{padding:2px 8px;background:var(--accent-l);color:var(--accent-d);border-radius:10px;font-size:.72rem}
+.empty-result{text-align:center;padding:48px;color:var(--text-m)}
+.empty-result .emoji{font-size:3rem;margin-bottom:12px}
+.chat-wrap{max-width:800px;margin:0 auto;text-align:left}
+.chat-messages{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);padding:20px;min-height:180px;max-height:450px;overflow-y:auto;margin-bottom:12px}
+.chat-msg{margin-bottom:16px}
+.chat-msg.user{text-align:right}
+.chat-msg.user .bubble{background:var(--accent);color:#fff;display:inline-block;padding:10px 16px;border-radius:14px 14px 4px 14px;max-width:80%;text-align:left;font-size:.9rem}
+.chat-msg.ai .bubble{background:#fff;border:1px solid var(--border);display:inline-block;padding:12px 16px;border-radius:14px 14px 14px 4px;max-width:80%;font-size:.9rem;line-height:1.7}
+.chat-input-area{display:flex;gap:8px}
+.chat-input-area input{flex:1;background:var(--card);border:2px solid var(--border);border-radius:50px;padding:12px 20px;font-size:.9rem;outline:none;transition:.2s}
+.chat-input-area input:focus{border-color:var(--accent)}
+.qa-tabs{display:flex;justify-content:center;margin-bottom:24px}
+.qa-tab{padding:10px 28px;cursor:pointer;font-size:.9rem;color:var(--text-m);background:none;border:1px solid var(--border);transition:.2s}
+.qa-tab:first-child{border-radius:8px 0 0 8px}
+.qa-tab:last-child{border-radius:0 8px 8px 0}
+.qa-tab.active{background:#22c55e;color:#fff;border-color:var(--accent);font-weight:600}
+.section-tag{color:var(--accent);font-size:.82rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px}
+.section-title{font-size:1.8rem;font-weight:700;margin-bottom:12px;color:#0f172a}
+.section-subtitle{color:var(--text-m);font-size:.95rem;margin-bottom:40px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.about-text{color:var(--text-m);font-size:.93rem;line-height:1.8}
+.about-text p{margin-bottom:16px}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.stat-card{background:#f8fafc;border-radius:var(--radius);padding:24px;text-align:center}
+.stat-num{font-size:2rem;font-weight:800;color:var(--accent-d)}
+.stat-label{color:var(--text-m);font-size:.82rem;margin-top:4px}
+.practice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.practice-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px 24px;transition:.2s}
+.practice-card:hover{border-color:#e5e7eb;box-shadow:0 4px 16px rgba(0,0,0,.04);transform:translateY(-1px)}
+.practice-icon{font-size:1.5rem;margin-bottom:12px}
+.practice-name{font-size:1rem;font-weight:700;margin-bottom:8px}
+.practice-desc{color:var(--text-m);font-size:.84rem;line-height:1.6}
+#contact{background:var(--bg2);max-width:100%;padding:80px 40px}
+#contact>*{max-width:1100px;margin-left:auto;margin-right:auto}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.contact-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:24px}
+.contact-icon{width:40px;height:40px;background:var(--accent-l);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.contact-label{color:var(--text-l);font-size:.75rem;margin-bottom:2px}
+.contact-value{font-size:.95rem}
+.qr-img{width:150px;height:150px;border-radius:var(--radius);border:2px solid var(--border)}
+footer{text-align:center;padding:32px;border-top:1px solid var(--border);color:var(--text-l);font-size:.8rem;background:var(--bg2)}
+.btn-green{display:inline-block;padding:10px 24px;border-radius:8px;font-size:.9rem;font-weight:600;cursor:pointer;background:var(--accent);color:#fff;border:none;transition:.2s}
+.btn-green:hover{background:var(--accent-d)}
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+@media(max-width:768px){
+nav{padding:12px 20px}
+.nav-links{display:none;position:absolute;top:56px;left:0;right:0;background:#fff;flex-direction:column;padding:16px;gap:12px;border-bottom:1px solid var(--border)}
+.nav-links.open{display:flex}
+.menu-btn{display:flex}
+section{padding:48px 20px}
+.hero-name{font-size:1.6rem}
+.about-grid,.contact-grid,.practice-grid{grid-template-columns:1fr}
+.stat-grid{grid-template-columns:1fr 1fr}
+.search-box{flex-direction:column;gap:8px;padding:12px;border-radius:16px}
+.search-box button{width:100%;border-radius:12px}
 }
 </style>
 </head>
 <body>
+<nav id="navbar"><div class="logo">孙贤哲律师</div><ul class="nav-links" id="navLinks"><li><a href="#hero">首页</a></li><li><a href="#about">关于我</a></li><li><a href="#practice">业务领域</a></li><li><a href="#contact">联系方式</a></li></ul><button class="menu-btn" id="menuBtn"><span></span><span></span><span></span></button></nav>
 
-<nav id="navbar">
-  <div class="logo">孙贤哲 律师</div>
-  <ul class="nav-links" id="navLinks">
-    <li><a href="#hero">首页</a></li>
-    <li><a href="#about">关于我</a></li>
-    <li><a href="#practice">业务领域</a></li>
-    <li><a href="#legal-qa">法律咨询</a></li>
-    <li><a href="#contact">联系方式</a></li>
-  </ul>
-  <button class="menu-btn" id="menuBtn" aria-label="菜单"><span></span><span></span><span></span></button>
-</nav>
-
-<!-- Hero -->
 <section id="hero">
-  <div class="hero-row">
-    <div class="hero-content fade-in">
-      <div class="hero-badge">北京策略（济南）律师事务所</div>
-      <h1 class="hero-name">孙<span>贤</span>哲</h1>
-      <p class="hero-title">执业律师</p>
-      <div class="hero-tags">
-        <span>刑事辩护</span><span>民商事诉讼</span><span>知识产权</span><span>企业法律顾问</span><span>合同纠纷</span>
-      </div>
-      <p class="hero-firm">以专业捍卫权利，以信念守护公正</p>
-      <div class="hero-cta">
-        <a href="#legal-qa" class="btn-primary">免费法律咨询</a>
-        <a href="#contact" class="btn-outline">联系我</a>
-      </div>
-    </div>
-    <div class="hero-portrait fade-in">
-      <img src="portrait.jpg" alt="孙贤哲律师">
-    </div>
-  </div>
+<div class="fade-in"><img src="portrait.jpg" alt="孙贤哲律师" class="hero-avatar"><h1 class="hero-name">孙<span>贤</span>哲 律师</h1><div class="hero-tags"><span>刑事辩护</span><span>民商事诉讼</span><span>知识产权</span><span>企业法律顾问</span><span>合同纠纷</span></div><p class="hero-firm">北京策略（济南）律师事务所</p></div>
+<div class="search-wrap fade-in">
+<div class="qa-tabs"><button class="qa-tab active" onclick="switchMode('kb')" id="tabKb">知识库检索</button><button class="qa-tab" onclick="switchMode('ai')" id="tabAi">AI 问答</button></div>
+<div id="kbArea"><div class="search-box"><input type="text" id="searchInput" placeholder="请输入你的法律问题，我们会给出结论和下一步建议..." onkeydown="if(event.key===`Enter`)doSearch()"><button onclick="doSearch()">搜索</button></div><div class="quick-chips" style="margin:16px 0"><span class="quick-chip" onclick="quickSearch('刑事拘留多少天')">刑事拘留多少天</span><span class="quick-chip" onclick="quickSearch('借条怎么写才有效')">借条怎么写</span><span class="quick-chip" onclick="quickSearch('离婚财产怎么分割')">离婚财产怎么分</span><span class="quick-chip" onclick="quickSearch('被公司辞退怎么要补偿')">被辞退怎么补偿</span><span class="quick-chip" onclick="quickSearch('工伤认定条件')">工伤怎么认定</span></div><div class="results-wrap" id="resultsArea" style="margin-top:28px"></div></div>
+<div id="aiArea" style="display:none"><div class="chat-wrap"><div class="chat-messages" id="chatMessages"><div class="chat-msg ai"><div class="bubble">你好，我是孙贤哲律师的 AI 助手。请输入你的法律问题，我会基于中国现行法律法规为你解答。<br><small style="color:#94a3b8">AI 回答仅供参考，具体案件请预约当面咨询</small></div></div></div><div class="chat-input-area"><input type="text" id="chatInput" placeholder="输入法律问题..." onkeydown="if(event.key===`Enter`)askAI()"><button class="btn-green" onclick="askAI()">发送</button></div></div></div>
+</div>
 </section>
 
-<!-- About -->
-<section id="about">
-  <div class="section-tag fade-in">About</div>
-  <h2 class="section-title fade-in">关于我</h2>
-  <div class="about-grid">
-    <div class="about-text fade-in">
-      <p>我是孙贤哲，北京策略（济南）律师事务所执业律师。执业以来，始终秉持"以事实为依据、以法律为准绳"的理念，在刑事辩护、民商事诉讼、知识产权、企业法律顾问等领域积累了丰富的实务经验。</p>
-      <p>刑事辩护是我的核心专业方向，涵盖经济犯罪、职务犯罪、暴力犯罪、毒品犯罪等。同时，我也办理了大量民事案件，包括合同纠纷、民间借贷、侵权纠纷、知识产权、劳动争议等，对多领域法律实务均有深入理解。</p>
-      <p>无论案件大小，我都以最充分的准备和最积极的态度面对。深知每一份委托背后都是一个家庭的信任与期待，我始终坚持用专业说话、用结果交卷。</p>
-    </div>
-    <div class="stats fade-in">
-      <div class="stat-card"><div class="stat-num">3+</div><div class="stat-label">执业年限</div></div>
-      <div class="stat-card"><div class="stat-num">300+</div><div class="stat-label">办理案件</div></div>
-      <div class="stat-card"><div class="stat-num">刑民</div><div class="stat-label">双向覆盖</div></div>
-      <div class="stat-card"><div class="stat-num">100+</div><div class="stat-label">胜诉/和解</div></div>
-    </div>
-  </div>
-</section>
+<section id="about"><div class="section-tag fade-in">About</div><h2 class="section-title fade-in">关于我</h2><div class="about-grid"><div class="about-text fade-in"><p>我是孙贤哲，北京策略（济南）律师事务所执业律师。执业以来始终秉持"以事实为依据、以法律为准绳"的理念，在刑事辩护、民商事诉讼、知识产权、企业法律顾问等领域积累了丰富的实务经验。</p><p>刑事辩护是我的核心方向，涵盖经济犯罪、职务犯罪、暴力犯罪、毒品犯罪等。同时办理大量民事案件——合同纠纷、民间借贷、侵权、知识产权、劳动争议等。</p><p>每一份委托背后都是一个家庭的信任。用专业说话、用结果交卷。</p></div><div class="stat-grid fade-in"><div class="stat-card"><div class="stat-num">刑民</div><div class="stat-label">双向覆盖</div></div><div class="stat-card"><div class="stat-num">100+</div><div class="stat-label">胜诉/和解</div></div></div></div></section>
 
-<!-- Practice Areas -->
-<section id="practice">
-  <div class="section-tag fade-in">Practice Areas</div>
-  <h2 class="section-title fade-in">业务领域</h2>
-  <p class="section-subtitle fade-in">刑事辩护与民商事法律服务并重，全方位保障您的合法权益</p>
-  <div class="practice-grid">
-    <div class="practice-card fade-in"><div class="practice-icon">&#x1F6E1;&#xFE0F;</div><h3 class="practice-name">刑事辩护</h3><p class="practice-desc">取保候审、无罪辩护、罪轻辩护、认罪认罚协商、二审及再审代理，覆盖侦查至审判全流程。</p></div>
-    <div class="practice-card fade-in"><div class="practice-icon">&#x1F4CB;</div><h3 class="practice-name">合同纠纷</h3><p class="practice-desc">买卖合同、借贷合同、租赁合同、建设工程合同等各类合同纠纷的诉讼与仲裁代理。</p></div>
-    <div class="practice-card fade-in"><div class="practice-icon">&#x1F4B0;</div><h3 class="practice-name">民间借贷</h3><p class="practice-desc">借贷款项追讨、利息计算、担保责任认定、债务重组，代理出借人或借款人维权。</p></div>
-    <div class="practice-card fade-in"><div class="practice-icon">&#x2696;&#xFE0F;</div><h3 class="practice-name">侵权纠纷</h3><p class="practice-desc">人身损害赔偿、交通事故、医疗纠纷、名誉权侵权等，为受害方争取应有赔偿。</p></div>
-    <div class="practice-card fade-in"><div class="practice-icon">&#x1F4A1;</div><h3 class="practice-name">知识产权</h3><p class="practice-desc">商标、专利、著作权侵权维权与应诉，商业秘密保护，为企业创新成果提供全方位法律保护。</p></div>
-    <div class="practice-card fade-in"><div class="practice-icon">&#x1F3E2;</div><h3 class="practice-name">企业法律顾问</h3><p class="practice-desc">合同审查、劳动用工合规、股权架构、企业刑事风险防范、常年法律顾问服务。</p></div>
-  </div>
-</section>
+<section id="practice"><div class="section-tag fade-in">Practice Areas</div><h2 class="section-title fade-in">业务领域</h2><p class="section-subtitle fade-in">刑事辩护与民商事法律服务并重，全方位保障合法权益</p><div class="practice-grid"><div class="practice-card fade-in"><div class="practice-icon">&#x1F6E1;</div><h3 class="practice-name">刑事辩护</h3><p class="practice-desc">专注经济类犯罪辩护：非法集资、诈骗、职务侵占、贪污贿赂、非法经营、帮信罪等，取保候审、无罪/罪轻辩护、认罪认罚协商。</p></div><div class="practice-card fade-in"><div class="practice-icon">&#x1F4CB;</div><h3 class="practice-name">合同纠纷</h3><p class="practice-desc">买卖、借贷、租赁、建设工程等各类合同纠纷的诉讼与仲裁代理。</p></div><div class="practice-card fade-in"><div class="practice-icon">&#x1F4B0;</div><h3 class="practice-name">民间借贷</h3><p class="practice-desc">借贷款项追讨、利息计算、担保责任认定、债务重组，代理出借人或借款人维权。</p></div><div class="practice-card fade-in"><div class="practice-icon">&#x2696;</div><h3 class="practice-name">侵权纠纷</h3><p class="practice-desc">人身损害赔偿、交通事故、医疗纠纷、名誉权侵权等，为受害方争取应有赔偿。</p></div><div class="practice-card fade-in"><div class="practice-icon">&#x1F4A1;</div><h3 class="practice-name">知识产权</h3><p class="practice-desc">商标、专利、著作权侵权维权与应诉，商业秘密保护，为企业创新成果提供法律保护。</p></div><div class="practice-card fade-in"><div class="practice-icon">&#x1F3E2;</div><h3 class="practice-name">企业法律顾问</h3><p class="practice-desc">合同审查、劳动用工合规、股权架构、企业刑事风险防范、常年法律顾问服务。</p></div></div></section>
 
-<!-- Legal Q&A -->
-<section id="legal-qa">
-  <div style="max-width:1200px;margin:0 auto">
-    <div class="section-tag fade-in">Legal Q&A</div>
-    <h2 class="section-title fade-in">法律咨询</h2>
-    <p class="section-subtitle fade-in">选择检索模式：知识库搜索刑事及民事常见法律问题，或使用 AI 助手深度解答</p>
-  </div>
-  <div class="qa-container">
-    <!-- Mode Tabs -->
-    <div class="qa-mode-tabs fade-in">
-      <button class="qa-mode-tab active" onclick="switchMode('kb')" id="tabKb">&#x1F4DA; 知识库检索</button>
-      <button class="qa-mode-tab" onclick="switchMode('ai')" id="tabAi">&#x1F916; AI 智能问答</button>
-    </div>
+<section id="contact"><div class="section-tag fade-in">Contact</div><h2 class="section-title fade-in">联系方式</h2><p class="section-subtitle fade-in">如需委托代理或法律咨询，请通过以下方式联系</p><div class="contact-grid"><div class="fade-in"><div class="contact-item"><div class="contact-icon">&#x1F3E2;</div><div><div class="contact-label">执业机构</div><div class="contact-value">北京策略（济南）律师事务所</div></div></div><div class="contact-item"><div class="contact-icon">&#x1F4CD;</div><div><div class="contact-label">律所地址</div><div class="contact-value">济南市历下区全运村中央广场A2座404</div></div></div><div class="contact-item"><div class="contact-icon">&#x1F4DE;</div><div><div class="contact-label">联系电话</div><div class="contact-value">16653189068</div></div></div><div class="contact-item"><div class="contact-icon">&#x2709;</div><div><div class="contact-label">电子邮箱</div><div class="contact-value">sunxianzhe@163.com</div></div></div></div><div class="fade-in" style="display:flex;flex-direction:column;align-items:center;justify-content:center"><img src="qr.jpg" alt="微信二维码" class="qr-img"><p style="color:var(--text-m);font-size:.82rem;margin-top:12px">扫码添加微信</p></div></div></section>
 
-    <!-- Knowledge Base -->
-    <div class="fade-in" id="kbArea">
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder="输入法律问题，如：刑事拘留多少天？民间借贷利息怎么算？" onkeydown="if(event.key==='Enter')doSearch()">
-        <button onclick="doSearch()">&#x1F50E;&#xFE0F; 搜索</button>
-      </div>
-      <div class="search-hint">
-        热门搜索：
-        <a onclick="quickSearch('刑事拘留期限')">刑事拘留</a> ·
-        <a onclick="quickSearch('取保候审条件')">取保候审</a> ·
-        <a onclick="quickSearch('民间借贷利息')">借贷利息</a> ·
-        <a onclick="quickSearch('醉驾判多久')">醉驾</a> ·
-        <a onclick="quickSearch('借条怎么写')">借条怎么写</a> ·
-        <a onclick="quickSearch('合同纠纷起诉')">合同纠纷</a> ·
-        <a onclick="quickSearch('工伤赔偿')">工伤赔偿</a>
-      </div>
-      <div class="results-area fade-in" id="resultsArea"></div>
-    </div>
-
-    <!-- AI Chat -->
-    <div class="chat-area fade-in" id="aiArea">
-      <div>
-        <div class="chat-messages" id="chatMessages">
-          <div class="chat-msg ai">
-            <div class="bubble">您好，我是孙贤哲律师的 AI 智能助手。我可以根据中国现行法律法规为您提供初步法律参考，涵盖刑事、民事、执行等领域。请问您有什么问题？<br><br><small style="color:#c9a96e">AI 回答仅供参考，不构成正式法律意见。具体案件请预约当面咨询。</small></div>
-          </div>
-        </div>
-        <div class="chat-input-area">
-          <input type="text" id="chatInput" placeholder="输入您的法律问题..." onkeydown="if(event.key==='Enter')askAI()">
-          <button class="btn-primary" onclick="askAI()" style="padding:14px 24px">发送</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Contact -->
-<section id="contact">
-  <div class="section-tag fade-in">Contact</div>
-  <h2 class="section-title fade-in">联系方式</h2>
-  <p class="section-subtitle fade-in">如需委托代理或法律咨询，请通过以下方式联系</p>
-  <div class="contact-grid">
-    <div class="fade-in">
-      <div class="contact-item"><div class="contact-icon">&#x1F3E2;</div><div><div class="contact-label">执业机构</div><div class="contact-value">北京策略（济南）律师事务所</div></div></div>
-      <div class="contact-item"><div class="contact-icon">&#x1F4CD;</div><div><div class="contact-label">律所地址</div><div class="contact-value">济南市历下区全运村中央广场A2座404</div></div></div>
-      <div class="contact-item"><div class="contact-icon">&#x1F4DE;</div><div><div class="contact-label">联系电话</div><div class="contact-value">16653189068</div></div></div>
-      <div class="contact-item"><div class="contact-icon">&#x2709;&#xFE0F;</div><div><div class="contact-label">电子邮箱</div><div class="contact-value">sunxianzhe@163.com</div></div></div>
-    </div>
-    <div class="fade-in" style="display:flex;flex-direction:column;align-items:center;justify-content:center">
-      <img src="qr.jpg" alt="微信二维码" class="qr-img" style="width:160px;height:160px">
-      <p style="color:var(--text-dim);font-size:.82rem;margin-top:12px">添加微信请备注"法律咨询"</p>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <p style="margin-bottom:8px">孙贤哲律师 &copy; 2026 · 北京策略（济南）律师事务所</p>
-  <p>本网站内容仅供参考，不构成正式法律意见。具体法律问题请咨询执业律师。</p>
-</footer>
+<footer>孙贤哲律师 &copy; 2026 · 北京策略（济南）律师事务所 · 本网站内容仅供参考，不构成正式法律意见</footer>
 
 <script>
-// ═══════════ NAV ═══════════
-const navbar=document.getElementById('navbar'),menuBtn=document.getElementById('menuBtn'),navLinks=document.getElementById('navLinks');
-menuBtn.onclick=()=>navLinks.classList.toggle('open');
-document.querySelectorAll('.nav-links a').forEach(a=>a.onclick=()=>navLinks.classList.remove('open'));
-window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>50);
-  const sections=document.querySelectorAll('section[id]');
-  let current='';
-  sections.forEach(s=>{const top=s.offsetTop-100;if(window.scrollY>=top)current=s.getAttribute('id');});
-  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+current));
-});
-const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:.15});
-document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
-
-// ═══════════ KNOWLEDGE BASE ═══════════
 const KB=[
   // ── 刑事 ──
   {q:'刑事拘留最长多少天',a:'根据《刑事诉讼法》第八十九条，刑事拘留最长期限为37天（公安机关最长30天 + 检察院审查批捕7天）。对于流窜作案、多次作案、结伙作案的重大嫌疑分子，提请审查批准时间可延长至30日。',tags:['刑事','拘留','期限']},
@@ -447,89 +271,23 @@ const KB=[
   {q:'什么是小额诉讼程序',a:'《民事诉讼法》第一百六十五条：基层法院审理事实清楚、权利义务关系明确、争议不大的简单案件，标的额为各省上年度就业人员年均工资50%以下的，适用小额诉讼程序。一审终审、不得上诉、审理期限短（一般为1个月）。不适用：人身关系、财产确权、涉外、需要评估鉴定、下落不明、反诉等复杂案件。标的额超50%但双方约定适用的也可适用。',tags:['民事','小额','程序']},
   {q:'被限制高消费怎么办',a:'如果被纳入失信名单和限制高消费：（1）尽快履行生效法律文书确定的义务——履行后可申请删除失信信息、解除限高；（2）与申请执行人协商达成执行和解——和解协议履行完毕后可解除；（3）提供有效担保——申请暂缓执行并申请解除限高；（4）确无财产可供执行的，待终结本次执行程序后可向法院申请解除（执行完毕前限高可能持续）。',tags:['民事','限高','失信']},
 ];
+</script>
+<script>
+const nb=document.getElementById("navbar"),mb=document.getElementById("menuBtn"),nl=document.getElementById("navLinks");
+mb.onclick=function(){nl.classList.toggle("open")};
+document.querySelectorAll(".nav-links a").forEach(function(a){a.onclick=function(){nl.classList.remove("open")}});
+addEventListener("scroll",function(){nb.classList.toggle("scrolled",scrollY>50)});
+document.querySelectorAll(".fade-in").forEach(function(el){new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add("visible")})},{threshold:.12}).observe(el)});
 
-// ═══════════ SEARCH ═══════════
-function search(query){
-  const q=query.toLowerCase().trim();
-  if(!q)return[];
-  const results=[];
-  for(const item of KB){
-    let score=0;
-    const aText=item.a.toLowerCase(),qText=item.q.toLowerCase();
-    if(qText.includes(q))score+=50;
-    if(aText.includes(q))score+=20;
-    const keywords=q.split(/[\s,，、。；;]+/).filter(k=>k.length>0);
-    for(const kw of keywords){
-      if(qText.includes(kw))score+=15;
-      if(aText.includes(kw))score+=8;
-      for(const tag of item.tags)if(tag.includes(kw))score+=10;
-    }
-    for(let i=0;i<q.length-1;i++){
-      const sub=q.substring(i,i+2);
-      if(qText.includes(sub))score+=3;
-      if(aText.includes(sub))score+=1;
-    }
-    if(score>0)results.push({...item,score});
-  }
-  results.sort((a,b)=>b.score-a.score);
-  return results.slice(0,8);
-}
-
-function displayResults(results,query){
-  const area=document.getElementById('resultsArea');
-  if(results.length===0){
-    area.innerHTML=`<div class="empty-result"><div class="emoji">&#x1F50D;</div><p>未找到与"${query}"相关的法律知识</p><p style="font-size:.85rem;margin-top:8px">建议：尝试更简洁的关键词，或切换到 AI 智能问答获取深度解答</p></div>`;
-  }else{
-    area.innerHTML=`<div class="result-count">找到 ${results.length} 条相关结果</div>${results.map(r=>`<div class="result-card"><h4>${r.q}</h4><p>${r.a}</p><div class="result-tags">${r.tags.map(t=>`<span class="result-tag">${t}</span>`).join('')}</div></div>`).join('')}`;
-  }
-  area.classList.add('active');
-}
-
-function doSearch(){const q=document.getElementById('searchInput').value.trim();if(q)displayResults(search(q),q);}
-function quickSearch(q){document.getElementById('searchInput').value=q;displayResults(search(q),q);}
-
-// ═══════════ MODE SWITCH ═══════════
-let currentMode='kb';
-function switchMode(mode){
-  currentMode=mode;
-  document.getElementById('tabKb').classList.toggle('active',mode==='kb');
-  document.getElementById('tabAi').classList.toggle('active',mode==='ai');
-  document.getElementById('kbArea').style.display=mode==='kb'?'block':'none';
-  document.getElementById('aiArea').classList.toggle('active',mode==='ai');
-  if(mode==='ai'){};
-}
-
-// ═══════════ AI CHAT ═══════════
-const DEFAULT_API_KEY='【sk-c6deff22e94f49339ce724309450a3ff】';
-const SYSTEM_PROMPT=`你是孙贤哲律师（北京策略（济南）律师事务所执业律师，业务覆盖刑事辩护、民商事诉讼、强制执行、企业法律顾问）的AI智能法律助手。职责：
-1. 基于中国现行法律、法规、司法解释提供初步法律参考
-2. 回答专业准确、通俗易懂
-3. 涉及具体案件时提醒咨询执业律师
-4. 不给出确定性案件结果预测
-5. 可附相关法条索引
-6. 中文回答，专业亲和`;
-
-async function askAI(){
-  const input=document.getElementById('chatInput'),q=input.value.trim();
-  if(!q)return;
-  const key=DEFAULT_API_KEY;
-  if(!key){alert('AI 功能未配置，请联系管理员');return;}
-  const messagesDiv=document.getElementById('chatMessages');
-  const userDiv=document.createElement('div');userDiv.className='chat-msg user';userDiv.innerHTML=`<div class="bubble">${q}</div>`;messagesDiv.appendChild(userDiv);
-  const aiDiv=document.createElement('div');aiDiv.className='chat-msg ai';aiDiv.innerHTML='<div class="bubble" style="color:#999">思考中...</div>';messagesDiv.appendChild(aiDiv);
-  messagesDiv.scrollTop=messagesDiv.scrollHeight;input.value='';
-  try{
-    const baseUrl=localStorage.getItem('sunxz_baseurl')||'https://api.deepseek.com/v1/chat/completions';
-    const model=localStorage.getItem('sunxz_model')||'deepseek-chat';
-    const resp=await fetch(baseUrl,{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${key}`},body:JSON.stringify({model,messages:[{role:'system',content:SYSTEM_PROMPT},{role:'user',content:q}],max_tokens:2000,temperature:.7})});
-    const data=await resp.json();
-    const answer=data.choices?.[0]?.message?.content||'抱歉，未能获取回答。请检查 API 配置。';
-    aiDiv.innerHTML=`<div class="bubble">${answer.replace(/\n/g,'<br>')}<br><br><small style="color:#c9a96e">AI 回答仅供参考，不构成正式法律意见。</small></div>`;
-  }catch(err){
-    aiDiv.innerHTML=`<div class="bubble" style="color:#e74c3c">请求失败：${err.message}</div>`;
-  }
-  messagesDiv.scrollTop=messagesDiv.scrollHeight;
-}
+function search(q){var ql=q.toLowerCase().trim();if(!ql)return[];var r=[];for(var i=0;i<KB.length;i++){var item=KB[i];var s=0;var at=item.a.toLowerCase(),qt=item.q.toLowerCase();if(qt.indexOf(ql)>=0)s+=50;if(at.indexOf(ql)>=0)s+=20;var kw=ql.split(/[\s,，、。；;]+/).filter(function(k){return k.length>0});for(var j=0;j<kw.length;j++){var k=kw[j];if(qt.indexOf(k)>=0)s+=15;if(at.indexOf(k)>=0)s+=8;for(var t=0;t<item.tags.length;t++){if(item.tags[t].indexOf(k)>=0)s+=10}}for(var j=0;j<ql.length-1;j++){var sub=ql.substring(j,j+2);if(qt.indexOf(sub)>=0)s+=3;if(at.indexOf(sub)>=0)s+=1}if(s>0)r.push({q:item.q,a:item.a,tags:item.tags,score:s})}r.sort(function(a,b){return b.score-a.score});return r.slice(0,8)}
+function displayResults(r,q){var a=document.getElementById("resultsArea");if(!r.length){a.innerHTML='<div class="empty-result"><div class="emoji">&#x1F50D;</div><p>未找到相关法律知识</p><p style="font-size:.85rem;margin-top:8px">尝试更简洁的关键词或切换到 AI 问答</p></div>'}else{var html='<p style="color:#94a3b8;font-size:.82rem;margin-bottom:12px">找到 '+r.length+' 条结果</p>';for(var i=0;i<r.length;i++){var x=r[i];html+='<div class="result-card"><h4>'+x.q+'</h4><p>'+x.a+'</p><div class="result-tags">';for(var j=0;j<x.tags.length;j++){html+='<span class="result-tag">'+x.tags[j]+'</span>'}html+='</div></div>'}a.innerHTML=html}}
+function doSearch(){var q=document.getElementById("searchInput").value.trim();if(q)displayResults(search(q),q)}
+function quickSearch(q){document.getElementById("searchInput").value=q;displayResults(search(q),q);document.getElementById("hero").scrollIntoView({behavior:"smooth"})}
+var mode="kb";
+function switchMode(m){mode=m;document.getElementById("tabKb").classList.toggle("active",m==="kb");document.getElementById("tabAi").classList.toggle("active",m==="ai");document.getElementById("kbArea").style.display=m==="kb"?"block":"none";document.getElementById("aiArea").style.display=m==="ai"?"block":"none"}
+var KEY='sk-f2886332bbd24ae3a53e87290f3a3166';
+var SYS='你是孙贤哲律师（北京策略（济南）律师事务所，覆盖刑事辩护、民商事诉讼、知识产权、企业法律顾问）的AI法律助手。职责：1. 基于中国现行法律法规司法解释提供初步参考 2. 专业准确通俗 3. 涉及具体案件提醒咨询执业律师 4. 不给出确定性结果预测 5. 中文回答';
+async function askAI(){var i=document.getElementById("chatInput"),q=i.value.trim();if(!q)return;var d=document.getElementById("chatMessages");var ud=document.createElement("div");ud.className="chat-msg user";ud.innerHTML='<div class="bubble">'+q+'</div>';d.appendChild(ud);var ad=document.createElement("div");ad.className="chat-msg ai";ad.innerHTML='<div class="bubble" style="color:#94a3b8">...</div>';d.appendChild(ad);d.scrollTop=d.scrollHeight;i.value="";try{var resp=await fetch("https://api.deepseek.com/v1/chat/completions",{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Bearer "+KEY},body:JSON.stringify({model:"deepseek-chat",messages:[{role:"system",content:SYS},{role:"user",content:q}],max_tokens:2000,temperature:0.7})});var j=await resp.json();var answer=j.choices?.[0]?.message?.content||"服务暂不可用";ad.innerHTML='<div class="bubble">'+answer.replace(/\n/g,"<br>")+'<br><br><small style="color:#94a3b8">AI 回答仅供参考，不构成正式法律意见</small></div>'}catch(e){ad.innerHTML='<div class="bubble" style="color:#ef4444">请求失败：'+e.message+'</div>'}d.scrollTop=d.scrollHeight}
 </script>
 </body>
 </html>
